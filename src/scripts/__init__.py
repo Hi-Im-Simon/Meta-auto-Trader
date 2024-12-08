@@ -1,1 +1,1 @@
-from .rsi import get_rsi
+from .rsi import calculate_rsi

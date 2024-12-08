@@ -11,8 +11,8 @@ timeframes = json.load(file_timeframes)
 trader = AutoTrader(
     symbols=symbols,
     timeframes=timeframes,
-    get_bet_value=lambda symbol, balance, recommendation_factor: balance
+    get_invest_value=lambda symbol, balance, recommendation_factor: balance
     * recommendation_factor,
     ignore_warnings=True,
 )
-trader.do()
+trader.calculate_rf()

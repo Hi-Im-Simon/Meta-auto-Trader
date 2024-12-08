@@ -10,13 +10,16 @@ from src.utils import map_timeframe
 from .. import AutoTrader
 
 
-def get_rsi(
+def calculate_rsi(
     self: AutoTrader,
     symbol_name: str,
     timeframe: int,
     rsi_window: int = 5,
     plot: bool = False,
 ) -> float:
+    """
+    Calculate the RSI for a given symbol and timeframe.
+    """
     end = datetime.now()
     start = end - timedelta(days=31)
 
