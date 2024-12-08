@@ -1,0 +1,38 @@
+[
+  {
+    "name": "EURUSD"
+  },
+  {
+    "name": "GBPUSD"
+  },
+  {
+    "name": "USDJPY"
+  },
+  {
+    "name": "USDCHF"
+  },
+  {
+    "name": "USDCAD"
+  },
+  {
+    "name": "AUDUSD"
+  },
+  {
+    "name": "AUDNZD"
+  },
+  {
+    "name": "AUDCAD"
+  },
+  {
+    "name": "AUDCHF"
+  },
+  {
+    "name": "AUDJPY"
+  },
+  {
+    "name": "XAUUSD"
+  },
+  {
+    "name": "XAGUSD"
+  }
+]

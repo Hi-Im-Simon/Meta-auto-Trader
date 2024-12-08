@@ -1,0 +1,35 @@
+{
+  // Workspace parts.
+  "folders": [
+    {
+      "name": "Meta-auto-Trader",
+      "path": "."
+    }
+  ],
+  // Override default and user settings.
+  "settings": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "files.exclude": {
+      ".vscode": true,
+      "**/__pycache__": true,
+      "**/*.pyc": true
+    },
+    "[python]": {
+      "editor.defaultFormatter": "ms-python.black-formatter",
+      "editor.tabSize": 4
+    },
+    "python.analysis.diagnosticSeverityOverrides": {
+      "reportGeneralTypeIssues": "warning"
+    },
+    "python.analysis.typeCheckingMode": "basic"
+  },
+  // Recommended extensions.
+  "extensions": {
+    "recommendations": [
+      "ms-python.black-formatter",
+      "ms-python.python",
+      "KevinRose.vsc-python-indent"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "value": "mt5.TIMEFRAME_M1",
+    "weight": 0.8
+  },
+  {
+    "value": "mt5.TIMEFRAME_M5",
+    "weight": 1
+  },
+  {
+    "value": "mt5.TIMEFRAME_M15",
+    "weight": 0.7
+  },
+  {
+    "value": "mt5.TIMEFRAME_M30",
+    "weight": 0.6
+  },
+  {
+    "value": "mt5.TIMEFRAME_H1",
+    "weight": 0.5
+  },
+  {
+    "value": "mt5.TIMEFRAME_H4",
+    "weight": 0.4
+  },
+  {
+    "value": "mt5.TIMEFRAME_D1",
+    "weight": 0.3
+  },
+  {
+    "value": "mt5.TIMEFRAME_W1",
+    "weight": 0.2
+  },
+  {
+    "value": "mt5.TIMEFRAME_MN1",
+    "weight": 0.1
+  }
+]
