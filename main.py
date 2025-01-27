@@ -13,6 +13,6 @@ trader = AutoTrader(
     timeframes=timeframes,
     get_invest_value=lambda symbol, balance, recommendation_factor: balance
     * recommendation_factor,
-    ignore_warnings=True,
+    # ignore_warnings=True,
 )
 trader.calculate_rf()

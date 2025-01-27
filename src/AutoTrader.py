@@ -62,35 +62,35 @@ class AutoTrader:
         if self.print_steps:
             table_headers = ["Symbol"]
             table_rows = []
+
         for symbol in self.symbols:
             rsis: npt.NDArray[np.float64] = np.array([])
+            table_row = [symbol["name"]]
 
             for timeframe in self.timeframes:
                 try:
-                    rsis = np.append(
-                        rsis, calculate_rsi(self, symbol["name"], timeframe["value"])
-                    )
+                    rsi_value = calculate_rsi(self, symbol["name"], timeframe["value"])
+                    rsis = np.append(rsis, rsi_value)
+                    table_row.append(self.__auto_color(rsi_value))
                     if self.print_steps:
                         table_headers.append(map_timeframe(timeframe["value"]))
                 except NoDataException as e:
+                    if self.print_steps:
+                        table_row.append("")
                     if not self.ignore_warnings:
                         print(e)
+            table_headers.append("")
+            table_headers.append("BUY")
+            table_headers.append("SELL")
 
             weights = np.array([3 / i for i in range(5, len(rsis) + 5)])
             recommendation_factor_sell = np.average(rsis, weights=weights) / 100
             recommendation_factor_buy = 1 - recommendation_factor_sell
 
             if self.print_steps:
-                table_headers.extend(["", "RecBuy", "RecSell"])
-                table_rows.append(
-                    [
-                        symbol["name"],
-                        *[self.__auto_color(rsi) for rsi in rsis],
-                        "",
-                        self.__auto_color(recommendation_factor_buy, low=-1, high=0.5, middle=0, max=1, highlight=False),  # type: ignore
-                        self.__auto_color(recommendation_factor_sell, low=-1, high=0.5, middle=0, max=1, highlight=False),  # type: ignore
-                    ]
-                )
+                table_row.append(self.__auto_color(recommendation_factor_buy, low=-1, high=0.5, middle=0, max=1, highlight=False))  # type: ignore
+                table_row.append(self.__auto_color(recommendation_factor_sell, low=-1, high=0.5, middle=0, max=1, highlight=False))  # type: ignore)  # type: ignore
+                table_rows.append(table_row)
 
         if self.print_steps:
             # Create and display table with collected data.

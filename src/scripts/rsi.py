@@ -24,14 +24,13 @@ def calculate_rsi(
     start = end - timedelta(days=31)
 
     ticks = pd.DataFrame(mt5.copy_rates_range(symbol_name, timeframe, start, end))  # type: ignore
-
     delta = ticks["close"].diff()
 
     # If no data is available, throw an exception.
     if delta.dropna().empty:
         raise NoDataException(
             self.color_warn(
-                f"[NO DATA] No data found for symbol '{symbol_name}' in timeframe '{map_timeframe(timeframe)}'(s)."
+                f"[NO DATA] No data found for symbol '{symbol_name}' in timeframe '{map_timeframe(timeframe)}'."
             )
         )
 
@@ -51,4 +50,13 @@ def calculate_rsi(
         plt.title(symbol_name)
         plt.show()
 
-    return ticks["rsi"].tail(1).values[0]
+    result = ticks["rsi"].tail(1).values[0]
+
+    if result <= 0 or result >= 100:
+        raise NoDataException(
+            self.color_warn(
+                f"[INVALID DATA] Data for symbol '{symbol_name}' in timeframe '{map_timeframe(timeframe)}' seems to be invalid (received result `{result}`)."
+            )
+        )
+
+    return result
